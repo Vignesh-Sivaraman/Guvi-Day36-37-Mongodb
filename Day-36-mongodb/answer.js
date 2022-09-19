@@ -219,4 +219,3 @@ db.products.find({$and:[{product_color: {"$eq": "indigo"}}, {product_price: {"$e
 var criteria = db.products.aggregate([{ $group: { _id: "$product_price", count: { $sum: 1 } } },{ $match: { count: { $gt: 1 } } },]).toArray().map((d)=> d._id)
 // To delete the founded documents based on price
 db.products.deleteMany({product_price: {"$in": criteria}})
-db.test2.deleteMany({product_price: {"$in": change}})
